@@ -1,5 +1,6 @@
-﻿import "./styles/global.css";
+import "./styles/global.css";
 import Footer from "./components/layout/Footer";
+import Header from "./components/layout/Header";
 import WhatsAppButton from "./components/layout/WhatsAppButton";
 import Hero from "./components/sections/Hero";
 import Sobre from "./components/sections/Sobre";
@@ -10,6 +11,7 @@ import { navLinks } from "./data/siteData";
 export default function App() {
   return (
     <>
+      <Header navLinks={navLinks} />
       <main>
         <Hero />
         <Sobre />

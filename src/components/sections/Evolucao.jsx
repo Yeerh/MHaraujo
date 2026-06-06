@@ -1,6 +1,6 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { fadeUp } from "../../animations/fadeUp";
-import { resultados } from "../../data/siteData";
+import { resultados, whatsappUrl } from "../../data/siteData";
 import ImageWithFallback from "../common/ImageWithFallback";
 
 export default function Evolucao() {
@@ -62,7 +62,7 @@ export default function Evolucao() {
 
         <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="results-cta">
           <p>Pronto para construir sua evolução?</p>
-          <a className="btn btn-primary btn-big" href="https://wa.me/5581999999999" target="_blank" rel="noreferrer">
+          <a className="btn btn-primary btn-big" href={whatsappUrl} target="_blank" rel="noreferrer">
             COMEÇAR MINHA EVOLUÇÃO
           </a>
           <small>Resultados individuais podem variar conforme rotina, constância e acompanhamento.</small>

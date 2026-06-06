@@ -1,6 +1,6 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { fadeUp } from "../../animations/fadeUp";
-import { diferenciais } from "../../data/siteData";
+import { sobreSection, whatsappUrl } from "../../data/siteData";
 import ImageWithFallback from "../common/ImageWithFallback";
 
 export default function Sobre() {
@@ -13,32 +13,28 @@ export default function Sobre() {
             <div className="sobre-photo-card">
               <ImageWithFallback src="/images/hero-mobile-matheus.png" alt="Matheus em sessão de treino" className="sobre-photo" />
             </div>
-            <div className="sobre-tag">+800 ALUNOS ATENDIDOS</div>
+            <div className="sobre-tag">{sobreSection.tag}</div>
           </motion.div>
 
           <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <p className="eyebrow">QUEM SOU</p>
+            <p className="eyebrow">{sobreSection.eyebrow}</p>
             <h2 className="section-title">
-              <span>MAIS DE 5 ANOS</span>
-              <span>TRANSFORMANDO</span>
-              <span className="neon">CORPOS, ROTINAS E VIDAS</span>
-            </h2>
-            <p className="section-text">
-              Sou Matheus Araújo, personal trainer com mais de 5 anos de experiência e +800 alunos atendidos. Especialista em
-              hipertrofia e emagrecimento, ajudo pessoas em Recife e online a evoluírem com método, acompanhamento e resultado real.
-            </p>
-
-            <ul className="check-list">
-              {diferenciais.map((item) => (
-                <li key={item}>
-                  <span className="dot" />
-                  <span>{item}</span>
-                </li>
+              {sobreSection.titulo.map((linha) => (
+                <span key={linha}>{linha}</span>
               ))}
-            </ul>
+              <span className="neon">{sobreSection.destaque}</span>
+            </h2>
 
-            <a className="btn btn-primary sobre-cta" href="https://wa.me/5581999999999" target="_blank" rel="noreferrer">
-              COMEÇAR MINHA EVOLUÇÃO
+            <div className="sobre-copy">
+              {sobreSection.paragrafos.map((paragrafo) => (
+                <p key={paragrafo} className="section-text">
+                  {paragrafo}
+                </p>
+              ))}
+            </div>
+
+            <a className="btn btn-primary sobre-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
+              {sobreSection.botao}
             </a>
           </motion.div>
         </div>

@@ -1,15 +1,15 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { fadeUp } from "../../animations/fadeUp";
-import { planos } from "../../data/siteData";
+import { planos, planosSection, whatsappUrl } from "../../data/siteData";
 
 export default function Planos() {
   return (
     <section id="planos" className="section">
       <div className="container panel panel-dark">
         <motion.div custom={0} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="center-head">
-          <p className="eyebrow">O QUE OFEREÇO</p>
-          <h2 className="section-title center">MEUS PLANOS</h2>
-          <p className="section-text center">Escolha o acompanhamento ideal para sua rotina, objetivo e nível de evolução.</p>
+          <p className="eyebrow">{planosSection.eyebrow}</p>
+          <h2 className="section-title center plans-title">{planosSection.titulo}</h2>
+          <p className="section-text center plans-subtitle">{planosSection.subtitulo}</p>
         </motion.div>
 
         <div className="plan-grid">
@@ -23,23 +23,53 @@ export default function Planos() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="plan-number">{plano.numero}</div>
+              <div className="plan-head">
+                <div className="plan-number">{plano.numero}</div>
+                {plano.selo ? <span className="popular-badge">{plano.selo}</span> : <span className="plan-head-spacer" aria-hidden="true" />}
+              </div>
+
               <div className="plan-content">
-                <span className="popular-badge">{plano.selo}</span>
                 <h3>{plano.titulo}</h3>
-                <strong>{plano.frase}</strong>
-                <p>{plano.descricao}</p>
-                <div className="plan-options">{plano.opcoes}</div>
-                <div className="plan-price">{plano.valor}</div>
-                <ul className="plan-benefits">
-                  {plano.beneficios.map((beneficio) => (
-                    <li key={beneficio}>
-                      <span className="dot" />
-                      <span>{beneficio}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a className="btn plan-button" href="https://wa.me/5581999999999" target="_blank" rel="noreferrer">
+                <p className="plan-description">{plano.descricao}</p>
+
+                <div className="plan-highlight">
+                  <span className="plan-price-label">{plano.precoLabel}</span>
+                  <div className="plan-price-main">
+                    <strong>{plano.precoValor}</strong>
+                    <span>{plano.precoPeriodo}</span>
+                  </div>
+                </div>
+
+                <div className="plan-block">
+                  <span className="plan-block-title">Inclui</span>
+                  <ul className="plan-benefits">
+                    {plano.beneficios.map((beneficio) => (
+                      <li key={beneficio}>
+                        <span className="dot" />
+                        <span>{beneficio}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="plan-block">
+                  <span className="plan-block-title">Valores</span>
+                  <div className="plan-pricing-grid">
+                    {plano.valores.map((item) => (
+                      <div key={item.periodo} className="plan-pricing-item">
+                        <span>{item.periodo}</span>
+                        <strong>{item.valor}</strong>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <a
+                  className={`btn plan-button ${plano.destaque === "popular" ? "plan-button-primary" : ""}`}
+                  href={`${whatsappUrl}?text=${encodeURIComponent(plano.mensagemWhatsapp)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {plano.botao}
                 </a>
               </div>
@@ -48,9 +78,9 @@ export default function Planos() {
         </div>
 
         <div className="plans-cta">
-          <p>Vagas limitadas por mês. Garanta sua avaliação agora.</p>
-          <a className="btn btn-primary btn-big" href="https://wa.me/5581999999999" target="_blank" rel="noreferrer">
-            GARANTIR MINHA VAGA
+          <p>{planosSection.ctaTexto}</p>
+          <a className="btn btn-primary btn-big" href={whatsappUrl} target="_blank" rel="noreferrer">
+            {planosSection.ctaBotao}
           </a>
         </div>
       </div>

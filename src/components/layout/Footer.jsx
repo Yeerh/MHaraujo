@@ -1,10 +1,24 @@
-﻿export default function Footer({ navLinks }) {
+import { whatsappUrl } from "../../data/siteData";
+
+export default function Footer({ navLinks }) {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer id="contato" className="footer">
-      <div className="container footer-inner">
-        <a href="#topo" className="brand small" aria-label="Voltar ao topo">
-          MTH<span className="brand-dot">.</span>ARAUJO
-        </a>
+      <div className="container footer-shell">
+        <div className="footer-brand-block">
+          <a href="#topo" className="footer-brand" aria-label="Voltar ao topo">
+            <img src="/images/hero-logo-matheus.png" alt="Logo Matheus Araújo" className="footer-logo" />
+            <div className="footer-brand-copy">
+              <strong>Matheus Araújo</strong>
+              <span>Personal Trainer • Hipertrofia e Emagrecimento</span>
+            </div>
+          </a>
+
+          <p className="footer-text">
+            Acompanhamento com treino, estratégia e constância para evolução real no físico e na rotina.
+          </p>
+        </div>
 
         <nav className="footer-nav" aria-label="Links do rodapé">
           {navLinks.map((item) => (
@@ -14,7 +28,12 @@
           ))}
         </nav>
 
-        <p>© 2025 Matheus Araújo · Personal Trainer</p>
+        <div className="footer-meta">
+          <a className="btn footer-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
+            Falar no WhatsApp
+          </a>
+          <p>© {currentYear} Matheus Araújo · Personal Trainer</p>
+        </div>
       </div>
     </footer>
   );
