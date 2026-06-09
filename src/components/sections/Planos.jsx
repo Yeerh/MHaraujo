@@ -32,16 +32,13 @@ export default function Planos() {
                 <h3>{plano.titulo}</h3>
                 <p className="plan-description">{plano.descricao}</p>
 
-                <div className="plan-highlight">
-                  <span className="plan-price-label">{plano.precoLabel}</span>
-                  <div className="plan-price-main">
-                    <strong>{plano.precoValor}</strong>
-                    <span>{plano.precoPeriodo}</span>
-                  </div>
+                <div className="plan-teaser">
+                  <span className="plan-teaser-label">Por que esse plano chama atencao</span>
+                  <p>{plano.interesse}</p>
                 </div>
 
                 <div className="plan-block">
-                  <span className="plan-block-title">Inclui</span>
+                  <span className="plan-block-title">O que oferece</span>
                   <ul className="plan-benefits">
                     {plano.beneficios.map((beneficio) => (
                       <li key={beneficio}>
@@ -50,18 +47,6 @@ export default function Planos() {
                       </li>
                     ))}
                   </ul>
-                </div>
-
-                <div className="plan-block">
-                  <span className="plan-block-title">Valores</span>
-                  <div className="plan-pricing-grid">
-                    {plano.valores.map((item) => (
-                      <div key={item.periodo} className="plan-pricing-item">
-                        <span>{item.periodo}</span>
-                        <strong>{item.valor}</strong>
-                      </div>
-                    ))}
-                  </div>
                 </div>
 
                 <a

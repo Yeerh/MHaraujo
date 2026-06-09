@@ -1585,4 +1585,281 @@
         grid-template-columns: 1fr;
       }
     }
+
+    :root {
+      --neon: #ffffff;
+      --neon-glow: rgba(255,255,255,0.08);
+      --bg: #000000;
+      --bg2: #050505;
+      --bg3: #0b0b0b;
+      --white: #ffffff;
+      --gray: #b8b8b8;
+      --border: rgba(255,255,255,0.12);
+    }
+
+    html, body, #root {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 10% 5%, rgba(255,255,255,0.05), transparent 28%),
+        #000000;
+    }
+
+    .panel-dark,
+    .panel-gradient,
+    .evolucao-section .panel-gradient,
+    .footer-shell,
+    .nav-shell,
+    .mobile-menu {
+      background: linear-gradient(180deg, rgba(10,10,10,0.98), rgba(0,0,0,0.98));
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .header {
+      background: linear-gradient(180deg, rgba(0,0,0,0.92), rgba(0,0,0,0));
+    }
+
+    .header.scrolled {
+      background: rgba(0,0,0,0.94);
+    }
+
+    .nav-shell,
+    .footer-shell {
+      box-shadow: 0 18px 44px rgba(0,0,0,0.42);
+    }
+
+    .desktop-nav a,
+    .footer-nav a,
+    .hero-brand-copy strong,
+    .hero-brand-copy span,
+    .hero-subtitle,
+    .section-title,
+    .section-text,
+    .hero-mobile-heading h1,
+    .hero-mobile-heading p,
+    .result-info h3,
+    .result-info p,
+    .result-info small,
+    .result-info span,
+    .plan-card h3,
+    .plan-description,
+    .plan-benefits li,
+    .plans-cta p,
+    .footer-brand-copy strong,
+    .footer-brand-copy span,
+    .footer-text,
+    .footer-meta p,
+    .stat-chip strong,
+    .stat-chip span {
+      color: #ffffff;
+    }
+
+    .section-text,
+    .hero-subtitle,
+    .plan-description,
+    .plan-benefits li,
+    .plans-cta p,
+    .footer-text,
+    .footer-brand-copy span,
+    .footer-meta p,
+    .result-info p,
+    .result-info small,
+    .stat-chip span,
+    .hero-mobile-heading p {
+      color: #b8b8b8;
+    }
+
+    .eyebrow,
+    .neon {
+      color: #ffffff;
+      text-shadow: none;
+    }
+
+    .hero-ambient {
+      background:
+        radial-gradient(circle at 14% 18%, rgba(255,255,255,0.08), transparent 34%),
+        radial-gradient(circle at 4% 58%, rgba(255,255,255,0.04), transparent 32%),
+        radial-gradient(circle at 34% 76%, rgba(255,255,255,0.04), transparent 42%);
+    }
+
+    .stats-strip,
+    .result-card,
+    .plan-card,
+    .footer-nav a,
+    .mobile-menu-nav a,
+    .sobre-photo-card,
+    .result-frame,
+    .result-image-wrap {
+      background: #050505;
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .result-image-pair {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .result-card:hover,
+    .plan-card:hover {
+      border-color: rgba(255,255,255,0.24);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.36);
+    }
+
+    .plan-card-popular,
+    .plan-card-premium {
+      background: linear-gradient(180deg, rgba(18,18,18,0.98), rgba(0,0,0,0.98));
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 20px 48px rgba(0,0,0,0.4);
+    }
+
+    .plan-number,
+    .popular-badge,
+    .result-tag,
+    .sobre-tag,
+    .btn-primary,
+    .header-cta,
+    .plan-button-primary,
+    .footer-cta,
+    .mobile-menu-cta {
+      background: #000000;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: none;
+    }
+
+    .btn-dark,
+    .plan-button {
+      background: transparent;
+      color: #ffffff;
+      border-color: rgba(255,255,255,0.3);
+      box-shadow: none;
+    }
+
+    .btn-primary:hover,
+    .header-cta:hover,
+    .plan-button-primary:hover,
+    .footer-cta:hover,
+    .mobile-menu-cta:hover,
+    .btn-dark:hover,
+    .plan-button:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+      filter: none;
+    }
+
+    .mobile-menu-backdrop {
+      background: rgba(0,0,0,0.72);
+    }
+
+    .mobile-menu-header {
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+
+    .mobile-menu-close,
+    .hamburger {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .mobile-menu-close span,
+    .hamburger span,
+    .check-list .dot,
+    .plan-benefits .dot {
+      background: #ffffff;
+    }
+
+    .mobile-menu-nav a:hover,
+    .footer-nav a:hover {
+      color: #ffffff;
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .stats-strip {
+      box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+    }
+
+    .stat-chip {
+      border-left-color: #ffffff;
+    }
+
+    .evolucao-section {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .evolucao-section .section-title,
+    .evolucao-section .section-text {
+      color: #ffffff;
+    }
+
+    .evolucao-section .section-text,
+    .results-cta p,
+    .results-cta small {
+      color: #b8b8b8;
+    }
+
+    .evolucao-section .center-head::after {
+      background: #ffffff;
+      box-shadow: none;
+    }
+
+    .result-image-label {
+      background: rgba(0,0,0,0.88);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .result-info strong {
+      color: #ffffff;
+    }
+
+    .result-info span {
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .plan-teaser {
+      width: 100%;
+      margin-top: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .plan-teaser-label {
+      display: block;
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .plan-teaser p {
+      margin: 0.55rem 0 0;
+      color: #b8b8b8;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .plan-block-title {
+      color: #ffffff;
+    }
+
+    @media (max-width: 767px) {
+      .hero {
+        background:
+          linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.9) 100%),
+          url('/images/hero-mobile-matheus.png');
+      }
+
+      .hero-ambient {
+        background:
+          radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.08), transparent 42%),
+          linear-gradient(0deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 24%, transparent 60%);
+      }
+    }
   
