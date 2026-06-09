@@ -1854,6 +1854,9 @@
         background:
           linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.9) 100%),
           url('/images/hero-mobile-matheus.png');
+        background-size: cover;
+        background-position: 72% center;
+        background-repeat: no-repeat;
       }
 
       .hero-ambient {
