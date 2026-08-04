@@ -33,7 +33,7 @@ export default function Planos() {
                 <p className="plan-description">{plano.descricao}</p>
 
                 <div className="plan-teaser">
-                  <span className="plan-teaser-label">Por que esse plano chama atencao</span>
+                  <span className="plan-teaser-label">Por que esse plano chama atenção</span>
                   <p>{plano.interesse}</p>
                 </div>
 
