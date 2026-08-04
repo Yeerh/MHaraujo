@@ -1,9 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { whatsappUrl } from "../../data/siteData";
+
+const menuItemVariants = {
+  closed: { opacity: 0, x: 22 },
+  open: { opacity: 1, x: 0 },
+};
 
 export default function Header({ navLinks }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeHref, setActiveHref] = useState("");
+  const menuButtonRef = useRef(null);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
@@ -21,17 +30,56 @@ export default function Header({ navLinks }) {
   }, []);
 
   useEffect(() => {
+    const sections = navLinks
+      .map(({ href }) => document.querySelector(href))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries.find((entry) => entry.isIntersecting);
+        if (visibleSection) setActiveHref(`#${visibleSection.target.id}`);
+      },
+      { rootMargin: "-25% 0px -65%", threshold: 0 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [navLinks]);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
     const onKeyDown = (event) => {
-      if (event.key === "Escape") setMenuOpen(false);
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab" || !menuRef.current) return;
+
+      const focusableElements = [...menuRef.current.querySelectorAll("a[href], button:not([disabled])")];
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements.at(-1);
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement?.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement?.focus();
+      }
     };
 
     const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = menuOpen ? "hidden" : previousOverflow;
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKeyDown);
+    const focusTimer = window.setTimeout(() => menuRef.current?.querySelector("button")?.focus(), 80);
 
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      window.clearTimeout(focusTimer);
+      menuButtonRef.current?.focus({ preventScroll: true });
     };
   }, [menuOpen]);
 
@@ -44,7 +92,7 @@ export default function Header({ navLinks }) {
 
         <nav className="desktop-nav" aria-label="Navegação principal">
           {navLinks.map((item) => (
-            <a key={item.href} href={item.href}>
+            <a key={item.href} href={item.href} aria-current={activeHref === item.href ? "page" : undefined}>
               {item.label}
             </a>
           ))}
@@ -55,10 +103,12 @@ export default function Header({ navLinks }) {
         </a>
 
         <button
+          ref={menuButtonRef}
           className="hamburger"
           type="button"
           aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
           aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
           onClick={() => setMenuOpen((prev) => !prev)}
         >
           <span />
@@ -67,33 +117,86 @@ export default function Header({ navLinks }) {
         </button>
       </div>
 
-      {menuOpen && (
-        <>
-          <button className="mobile-menu-backdrop" type="button" aria-label="Fechar menu" onClick={() => setMenuOpen(false)} />
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            <motion.button
+              className="mobile-menu-backdrop"
+              type="button"
+              aria-label="Fechar menu"
+              tabIndex={-1}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.24 }}
+              onClick={() => setMenuOpen(false)}
+            />
 
-          <div className="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu mobile">
-            <div className="mobile-menu-header">
-              <img src="/images/hero-logo-matheus.png" alt="Logo MA" className="mobile-menu-logo" />
-              <button className="mobile-menu-close" type="button" aria-label="Fechar menu" onClick={() => setMenuOpen(false)}>
-                <span />
-                <span />
-              </button>
-            </div>
-
-            <nav className="mobile-menu-nav" aria-label="Navegação mobile">
-              {navLinks.map((item) => (
-                <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
-                  {item.label}
+            <motion.aside
+              ref={menuRef}
+              id="mobile-navigation"
+              className="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="mobile-menu-title"
+              initial={{ x: "105%", opacity: 0.6 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "105%", opacity: 0.6 }}
+              transition={{ type: "spring", stiffness: 330, damping: 34 }}
+            >
+              <div className="mobile-menu-header">
+                <a href="#topo" className="mobile-menu-brand" aria-label="Voltar ao início" onClick={() => setMenuOpen(false)}>
+                  <img src="/images/hero-logo-matheus.png" alt="" className="mobile-menu-logo" />
+                  <span>
+                    <strong>Matheus Araújo</strong>
+                    <small>Personal Trainer</small>
+                  </span>
                 </a>
-              ))}
-            </nav>
+                <button className="mobile-menu-close" type="button" aria-label="Fechar menu" onClick={() => setMenuOpen(false)}>
+                  <span />
+                  <span />
+                </button>
+              </div>
 
-            <a className="btn btn-primary mobile-menu-cta" href={whatsappUrl} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>
-              QUERO COMEÇAR
-            </a>
-          </div>
-        </>
-      )}
+              <div className="mobile-menu-intro">
+                <span className="mobile-menu-kicker">Navegação</span>
+                <h2 id="mobile-menu-title">Onde você quer chegar?</h2>
+              </div>
+
+              <motion.nav
+                className="mobile-menu-nav"
+                aria-label="Navegação mobile"
+                initial="closed"
+                animate="open"
+                variants={{ open: { transition: { delayChildren: 0.1, staggerChildren: 0.055 } } }}
+              >
+                {navLinks.map((item, index) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    aria-current={activeHref === item.href ? "page" : undefined}
+                    variants={menuItemVariants}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <span className="mobile-menu-index">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="mobile-menu-label">{item.label}</span>
+                    <span className="mobile-menu-arrow" aria-hidden="true">→</span>
+                  </motion.a>
+                ))}
+              </motion.nav>
+
+              <div className="mobile-menu-footer">
+                <p><span aria-hidden="true" /> Atendimento online e presencial</p>
+                <a className="btn btn-primary mobile-menu-cta" href={whatsappUrl} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>
+                  <span>Começar agora</span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
