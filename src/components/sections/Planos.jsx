@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeUp } from "../../animations/fadeUp";
-import { planos, planosSection, whatsappUrl } from "../../data/siteData";
+import { createWhatsAppUrl, planos, planosSection, whatsappMessages } from "../../data/siteData";
 
 export default function Planos() {
   return (
@@ -51,7 +51,7 @@ export default function Planos() {
 
                 <a
                   className={`btn plan-button ${plano.destaque === "popular" ? "plan-button-primary" : ""}`}
-                  href={`${whatsappUrl}?text=${encodeURIComponent(plano.mensagemWhatsapp)}`}
+                  href={createWhatsAppUrl(plano.mensagemWhatsapp)}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -64,7 +64,7 @@ export default function Planos() {
 
         <div className="plans-cta">
           <p>{planosSection.ctaTexto}</p>
-          <a className="btn btn-primary btn-big" href={whatsappUrl} target="_blank" rel="noreferrer">
+          <a className="btn btn-primary btn-big" href={createWhatsAppUrl(whatsappMessages.planos)} target="_blank" rel="noreferrer">
             {planosSection.ctaBotao}
           </a>
         </div>

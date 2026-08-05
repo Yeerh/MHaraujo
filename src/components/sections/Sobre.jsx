@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeUp } from "../../animations/fadeUp";
-import { sobreSection, whatsappUrl } from "../../data/siteData";
+import { createWhatsAppUrl, sobreSection, whatsappMessages } from "../../data/siteData";
 import ImageWithFallback from "../common/ImageWithFallback";
 
 export default function Sobre() {
@@ -33,7 +33,7 @@ export default function Sobre() {
               ))}
             </div>
 
-            <a className="btn btn-primary sobre-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
+            <a className="btn btn-primary sobre-cta" href={createWhatsAppUrl(whatsappMessages.evolucao)} target="_blank" rel="noreferrer">
               {sobreSection.botao}
             </a>
           </motion.div>

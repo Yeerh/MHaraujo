@@ -1,4 +1,4 @@
-import { whatsappUrl } from "../../data/siteData";
+import { createWhatsAppUrl, whatsappMessages } from "../../data/siteData";
 
 export default function Footer({ navLinks }) {
   const currentYear = new Date().getFullYear();
@@ -29,7 +29,7 @@ export default function Footer({ navLinks }) {
         </nav>
 
         <div className="footer-meta">
-          <a className="btn footer-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
+          <a className="btn footer-cta" href={createWhatsAppUrl(whatsappMessages.contato)} target="_blank" rel="noreferrer">
             Falar no WhatsApp
           </a>
           <p>© {currentYear} Matheus Araújo · Personal Trainer</p>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { whatsappUrl } from "../../data/siteData";
+import { createWhatsAppUrl, whatsappMessages } from "../../data/siteData";
 
 const menuItemVariants = {
   closed: { opacity: 0, x: 22 },
@@ -98,7 +98,7 @@ export default function Header({ navLinks }) {
           ))}
         </nav>
 
-        <a className="btn desktop-cta header-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
+        <a className="btn desktop-cta header-cta" href={createWhatsAppUrl(whatsappMessages.evolucao)} target="_blank" rel="noreferrer">
           QUERO COMEÇAR
         </a>
 
@@ -188,7 +188,7 @@ export default function Header({ navLinks }) {
 
               <div className="mobile-menu-footer">
                 <p><span aria-hidden="true" /> Atendimento online e presencial</p>
-                <a className="btn btn-primary mobile-menu-cta" href={whatsappUrl} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>
+                <a className="btn btn-primary mobile-menu-cta" href={createWhatsAppUrl(whatsappMessages.evolucao)} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>
                   <span>Começar agora</span>
                   <span aria-hidden="true">↗</span>
                 </a>

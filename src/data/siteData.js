@@ -7,6 +7,17 @@ export const navLinks = [
 
 export const whatsappUrl = "https://wa.me/558183047273";
 
+export const whatsappMessages = {
+  evolucao:
+    "Olá, Matheus! Quero começar minha evolução e gostaria de entender qual acompanhamento é mais indicado para o meu objetivo. Pode me orientar?",
+  planos:
+    "Olá, Matheus! Conheci os planos pelo seu site e gostaria da sua ajuda para escolher o acompanhamento mais adequado ao meu objetivo e à minha rotina. Pode me orientar?",
+  contato:
+    "Olá, Matheus! Encontrei seu site e gostaria de tirar algumas dúvidas sobre o acompanhamento personalizado. Podemos conversar?",
+};
+
+export const createWhatsAppUrl = (message) => `${whatsappUrl}?text=${encodeURIComponent(message)}`;
+
 export const heroStats = [
   { value: "+800", label: "ALUNOS ATENDIDOS" },
   { value: "+8", label: "ANOS DE EXPERIÊNCIA" },
@@ -94,7 +105,8 @@ export const planos = [
       { periodo: "Anual", valor: "R$ 1.300,00" },
     ],
     botao: "Quero conhecer o Básico",
-    mensagemWhatsapp: "Olá, Matheus! Tenho interesse no Plano Online Básico e quero saber mais.",
+    mensagemWhatsapp:
+      "Olá, Matheus! Vi o Plano Online Básico no seu site e quero começar com um treino personalizado. Pode me explicar como funciona o acompanhamento e quais são os próximos passos?",
     destaque: "basic",
   },
   {
@@ -120,7 +132,8 @@ export const planos = [
       { periodo: "Anual", valor: "R$ 1.620,00" },
     ],
     botao: "Quero conhecer o Intermediário",
-    mensagemWhatsapp: "Olá, Matheus! Tenho interesse no Plano Online Intermediário e quero saber mais.",
+    mensagemWhatsapp:
+      "Olá, Matheus! Vi o Plano Online Intermediário e tenho interesse em alinhar treino e alimentação para acelerar meus resultados. Pode me explicar como funciona o acompanhamento e quais são os próximos passos?",
     destaque: "popular",
   },
   {
@@ -147,7 +160,8 @@ export const planos = [
       { periodo: "Anual", valor: "R$ 2.100,00" },
     ],
     botao: "Quero conhecer o Premium",
-    mensagemWhatsapp: "Olá, Matheus! Tenho interesse no Plano Online Premium e quero saber mais.",
+    mensagemWhatsapp:
+      "Olá, Matheus! Vi o Plano Online Premium e busco uma experiência mais completa, com avaliações presenciais e acompanhamento mais próximo. Pode me explicar como funciona e quais são os próximos passos?",
     destaque: "premium",
   },
 ];

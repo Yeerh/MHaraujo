@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeUp } from "../../animations/fadeUp";
-import { heroStats, whatsappUrl } from "../../data/siteData";
+import { createWhatsAppUrl, heroStats, whatsappMessages } from "../../data/siteData";
 
 export default function Hero() {
   return (
@@ -32,7 +32,7 @@ export default function Hero() {
             </p>
 
             <div className="hero-actions">
-              <a className="btn btn-primary" href={whatsappUrl} target="_blank" rel="noreferrer">
+              <a className="btn btn-primary" href={createWhatsAppUrl(whatsappMessages.evolucao)} target="_blank" rel="noreferrer">
                 COMEÇAR MINHA EVOLUÇÃO
               </a>
               <a className="btn btn-dark" href="#planos">
