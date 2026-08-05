@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import "./styles/global.css";
 import Intro from "./components/layout/Intro";
+import ScrollProgress from "./components/layout/ScrollProgress";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import WhatsAppButton from "./components/layout/WhatsAppButton";
@@ -22,10 +23,11 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <AnimatePresence>{showIntro && <Intro onComplete={() => window.setTimeout(() => setShowIntro(false), 350)} />}</AnimatePresence>
+      <ScrollProgress />
       <motion.div className="site-shell" initial={{ opacity: 0 }} animate={{ opacity: showIntro ? 0 : 1 }} transition={{ duration: 0.55 }}>
         <Header navLinks={navLinks} />
         <main>
-          <Hero />
+          <Hero ready={!showIntro} />
           <Sobre />
           <Evolucao />
           <Planos />

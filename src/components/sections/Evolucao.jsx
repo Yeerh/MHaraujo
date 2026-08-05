@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeUp } from "../../animations/fadeUp";
 import { createWhatsAppUrl, resultados, whatsappMessages } from "../../data/siteData";
-import ImageWithFallback from "../common/ImageWithFallback";
+import BeforeAfterSlider from "../common/BeforeAfterSlider";
 
 export default function Evolucao() {
   return (
@@ -25,28 +25,7 @@ export default function Evolucao() {
               viewport={{ once: true }}
             >
               <div className="result-image-wrap">
-                <div className="result-image-pair">
-                  <div className="result-frame">
-                    <ImageWithFallback
-                      src={item.antes}
-                      alt={`Antes de ${item.nome}`}
-                      className="result-image"
-                      placeholderText="Antes"
-                      showIcon={false}
-                    />
-                    <span className="result-image-label">Antes</span>
-                  </div>
-                  <div className="result-frame">
-                    <ImageWithFallback
-                      src={item.depois}
-                      alt={`Depois de ${item.nome}`}
-                      className="result-image"
-                      placeholderText="Depois"
-                      showIcon={false}
-                    />
-                    <span className="result-image-label">Depois</span>
-                  </div>
-                </div>
+                <BeforeAfterSlider item={item} />
                 <span className="result-tag">{item.categoria}</span>
               </div>
               <div className="result-info">

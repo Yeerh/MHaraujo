@@ -4,9 +4,26 @@ import { fadeUp } from "../../animations/fadeUp";
 import { createWhatsAppUrl, planos, planosSection, whatsappMessages } from "../../data/siteData";
 import AnamneseModal from "../common/AnamneseModal";
 
+const glowBounds = new WeakMap();
+
 export default function Planos() {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const closeAnamnese = useCallback(() => setSelectedPlan(null), []);
+
+  const moveCardGlow = (event) => {
+    if (event.pointerType !== "mouse") return;
+
+    const card = event.currentTarget;
+    const bounds = glowBounds.get(card) || card.getBoundingClientRect();
+    card.style.setProperty("--glow-x", `${((event.clientX - bounds.left) / bounds.width) * 100}%`);
+    card.style.setProperty("--glow-y", `${((event.clientY - bounds.top) / bounds.height) * 100}%`);
+  };
+
+  const startCardGlow = (event) => {
+    if (event.pointerType === "mouse") glowBounds.set(event.currentTarget, event.currentTarget.getBoundingClientRect());
+  };
+
+  const stopCardGlow = (event) => glowBounds.delete(event.currentTarget);
 
   return (
     <>
@@ -28,6 +45,9 @@ export default function Planos() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
+                onPointerEnter={startCardGlow}
+                onPointerMove={moveCardGlow}
+                onPointerLeave={stopCardGlow}
               >
                 <div className="plan-head">
                   <div className="plan-number">{plano.numero}</div>
