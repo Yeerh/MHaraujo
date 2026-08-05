@@ -22,7 +22,7 @@ export default function Sobre() {
               {sobreSection.titulo.map((linha) => (
                 <span key={linha}>{linha}</span>
               ))}
-              <span className="neon">{sobreSection.destaque}</span>
+              {sobreSection.destaque && <span className="neon">{sobreSection.destaque}</span>}
             </h2>
 
             <div className="sobre-copy">

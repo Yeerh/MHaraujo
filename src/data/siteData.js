@@ -27,8 +27,8 @@ export const heroStats = [
 
 export const sobreSection = {
   eyebrow: "QUEM SOU",
-  titulo: ["SOU MATHEUS ARAÚJO", "PROFISSIONAL DE", "EDUCAÇÃO FÍSICA"],
-  destaque: "PERSONAL TRAINER",
+  titulo: ["MATHEUS ARAÚJO"],
+  destaque: "",
   tag: "+800 ALUNOS ATENDIDOS",
   paragrafos: [
     "Sou Matheus Araújo, profissional de Educação Física e personal trainer, especialista em hipertrofia e emagrecimento, movido pela transformação de vidas por meio do treino.",
