@@ -2418,4 +2418,361 @@
         padding-top: 0.85rem;
       }
     }
+
+    /* Quick assessment modal */
+    .anamnese-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: grid;
+      place-items: center;
+      padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+    }
+
+    .anamnese-backdrop {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border: 0;
+      background: rgba(0, 4, 8, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
+
+    .anamnese-modal {
+      position: relative;
+      width: min(620px, 100%);
+      max-height: calc(100dvh - 2rem);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden auto;
+      color: #f7fcff;
+      border: 1px solid rgba(89, 201, 255, 0.3);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 92% 2%, rgba(57, 185, 255, 0.18), transparent 28%),
+        linear-gradient(155deg, rgba(13, 20, 26, 0.995), rgba(2, 5, 8, 0.998) 62%);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.62), 0 0 54px rgba(57, 185, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      overscroll-behavior: contain;
+    }
+
+    .anamnese-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: clamp(1rem, 3vw, 1.35rem) clamp(1rem, 4vw, 1.5rem);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .anamnese-header > div {
+      min-width: 0;
+    }
+
+    .anamnese-eyebrow {
+      display: block;
+      color: var(--neon);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .anamnese-header h2 {
+      margin: 0.3rem 0 0;
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.35rem);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+    }
+
+    .anamnese-close {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(89, 201, 255, 0.28);
+      border-radius: 14px;
+      background: rgba(57, 185, 255, 0.07);
+      cursor: pointer;
+      transition: transform 0.22s ease, background 0.22s ease;
+    }
+
+    .anamnese-close:active {
+      transform: scale(0.92);
+    }
+
+    .anamnese-close span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--neon);
+      box-shadow: 0 0 8px var(--neon-glow);
+    }
+
+    .anamnese-close span:first-child {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .anamnese-close span:last-child {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .anamnese-progress-wrap {
+      padding: 1rem clamp(1rem, 4vw, 1.5rem) 0;
+    }
+
+    .anamnese-progress-copy {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: #8fa5b2;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .anamnese-progress-copy strong {
+      color: var(--neon);
+    }
+
+    .anamnese-progress {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.4rem;
+      margin-top: 0.55rem;
+    }
+
+    .anamnese-progress span {
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.09);
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .anamnese-progress span.active {
+      background: var(--neon);
+      box-shadow: 0 0 12px rgba(57, 185, 255, 0.42);
+    }
+
+    .anamnese-question {
+      min-width: 0;
+      margin: 0;
+      padding: clamp(1.25rem, 4vw, 1.8rem) clamp(1rem, 4vw, 1.5rem);
+      border: 0;
+    }
+
+    .anamnese-question legend {
+      width: 100%;
+      padding: 0;
+      color: #fff;
+      font-size: clamp(1.1rem, 3.5vw, 1.35rem);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .anamnese-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-top: 1.1rem;
+    }
+
+    .anamnese-options label {
+      min-height: 68px;
+      display: grid;
+      grid-template-columns: 1.6rem minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.75rem 0.85rem;
+      color: #d9e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.035);
+      font-size: 0.78rem;
+      line-height: 1.35;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .anamnese-options label:hover,
+    .anamnese-options label.selected {
+      color: #fff;
+      border-color: rgba(89, 201, 255, 0.4);
+      background: rgba(57, 185, 255, 0.1);
+    }
+
+    .anamnese-options label:active {
+      transform: scale(0.985);
+    }
+
+    .anamnese-options input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .anamnese-options label:has(input:focus-visible) {
+      outline: 2px solid var(--neon);
+      outline-offset: 3px;
+    }
+
+    .anamnese-option-index {
+      color: var(--neon);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      opacity: 0.76;
+    }
+
+    .anamnese-radio {
+      width: 16px;
+      height: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 3px transparent;
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .anamnese-options label.selected .anamnese-radio {
+      border-color: var(--neon);
+      background: var(--neon);
+      box-shadow: inset 0 0 0 3px #071017, 0 0 10px var(--neon-glow);
+    }
+
+    .anamnese-footer {
+      margin-top: auto;
+      padding: 0 clamp(1rem, 4vw, 1.5rem) clamp(1rem, 3vw, 1.35rem);
+    }
+
+    .anamnese-footer p {
+      margin: 0 0 0.8rem;
+      color: #7f929e;
+      font-size: 0.65rem;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .anamnese-actions {
+      display: grid;
+      grid-template-columns: auto minmax(190px, 1fr);
+      gap: 0.65rem;
+    }
+
+    .anamnese-back,
+    .anamnese-next {
+      min-height: 52px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .anamnese-back {
+      padding: 0 1rem;
+      color: #c6d4dc;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.035);
+      cursor: pointer;
+    }
+
+    .anamnese-back:disabled {
+      opacity: 0.32;
+      cursor: not-allowed;
+    }
+
+    .anamnese-next {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      color: #03111a;
+      border: 1px solid rgba(169, 234, 255, 0.7);
+      background: linear-gradient(135deg, #1ea7ff, #76dcff);
+      box-shadow: 0 12px 28px rgba(57, 185, 255, 0.2);
+    }
+
+    .anamnese-next:disabled,
+    .anamnese-next.disabled {
+      color: #80909a;
+      border-color: rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: none;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .plan-button {
+      font-family: inherit;
+    }
+
+    @media (max-width: 560px) {
+      .anamnese-layer {
+        align-items: end;
+        padding: 0;
+      }
+
+      .anamnese-modal {
+        width: 100%;
+        max-height: calc(100dvh - max(0.5rem, env(safe-area-inset-top)));
+        padding-bottom: env(safe-area-inset-bottom);
+        border-right: 0;
+        border-bottom: 0;
+        border-left: 0;
+        border-radius: 24px 24px 0 0;
+      }
+
+      .anamnese-options {
+        grid-template-columns: 1fr;
+      }
+
+      .anamnese-options label {
+        min-height: 56px;
+      }
+
+      .anamnese-actions {
+        grid-template-columns: 92px minmax(0, 1fr);
+      }
+
+      .anamnese-submit {
+        font-size: 0.66rem;
+      }
+    }
+
+    @media (max-height: 650px) {
+      .anamnese-header {
+        padding-block: 0.75rem;
+      }
+
+      .anamnese-progress-wrap {
+        padding-top: 0.7rem;
+      }
+
+      .anamnese-question {
+        padding-block: 0.9rem;
+      }
+
+      .anamnese-options {
+        margin-top: 0.75rem;
+      }
+
+      .anamnese-options label {
+        min-height: 50px;
+        padding-block: 0.55rem;
+      }
+    }
   
