@@ -7,7 +7,6 @@ export default function Sobre() {
   return (
     <section id="sobre" className="section">
       <div className="container panel panel-dark">
-        <div className="panel-accent">✦</div>
         <div className="sobre-grid">
           <motion.div custom={0} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="sobre-photo-wrap">
             <div className="sobre-photo-card">

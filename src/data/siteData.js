@@ -18,13 +18,6 @@ export const whatsappMessages = {
 
 export const createWhatsAppUrl = (message) => `${whatsappUrl}?text=${encodeURIComponent(message)}`;
 
-export const heroStats = [
-  { value: "+800", label: "ALUNOS ATENDIDOS" },
-  { value: "+8", label: "ANOS DE EXPERIÊNCIA" },
-  { value: "ONLINE E PRESENCIAL", label: "ATENDIMENTO FLEXÍVEL" },
-  { value: "5,0", label: "AVALIAÇÃO MÉDIA" },
-];
-
 export const sobreSection = {
   eyebrow: "QUEM SOU",
   titulo: ["MATHEUS ARAÚJO"],
@@ -44,7 +37,7 @@ export const resultados = [
     nome: "Douglas",
     categoria: "PERDA DE PESO",
     resultado: "-50KG",
-    descricao: "em 6 meses de acompanhamento",
+    descricao: "em 2 anos de acompanhamento",
     formato: "Acompanhamento presencial",
     prova: "Método, constância e progressão.",
     antes: "/images/antes1.png",
@@ -54,7 +47,7 @@ export const resultados = [
     nome: "Dani",
     categoria: "EMAGRECIMENTO",
     resultado: "-45KG",
-    descricao: "em 6 meses",
+    descricao: "em 3 anos de acompanhamento",
     formato: "Consultoria online",
     prova: "Resultado construído sem promessa de milagre.",
     antes: "/images/antes2.png",
@@ -64,11 +57,44 @@ export const resultados = [
     nome: "Wander",
     categoria: "DEFINIÇÃO CORPORAL",
     resultado: "+16KG DE MASSA MUSCULAR",
-    descricao: "em 5 meses de acompanhamento",
+    descricao: "em 1 ano e 6 meses de acompanhamento",
     formato: "Acompanhamento personalizado",
     prova: "Mudança real com acompanhamento.",
     antes: "/images/antes3.png",
     depois: "/images/depois3.png",
+  },
+  {
+    nome: "Caio",
+    categoria: "GANHO DE MASSA MUSCULAR",
+    resultado: "+8KG DE MASSA MUSCULAR",
+    descricao: "em 4 meses de acompanhamento",
+    formato: "Acompanhamento presencial",
+    prova: "Transformação real com acompanhamento.",
+    antes: "/images/antes4.jpeg",
+    depois: "/images/depois4.png",
+    detalhesPendentes: true,
+  },
+  {
+    nome: "Cecilia",
+    categoria: "EMAGRECIMENTO",
+    resultado: "-10KG",
+    descricao: "em 3 meses de acompanhamento",
+    formato: "Consultoria online",
+    prova: "Resultado construído com método e consistência.",
+    antes: "/images/antes5.png",
+    depois: "/images/depois5.png",
+    detalhesPendentes: true,
+  },
+  {
+    nome: "Marcilio",
+    categoria: "EMAGRECIMENTO",
+    resultado: "-12KG",
+    descricao: "em 3 meses de acompanhamento",
+    formato: "Consultoria online",
+    prova: "Resultado construído com método e consistência.",
+    antes: "/images/antes6.png",
+    depois: "/images/depois6.png",
+    detalhesPendentes: true,
   },
 ];
 

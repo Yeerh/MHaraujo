@@ -29,11 +29,20 @@ export default function Evolucao() {
                 <span className="result-tag">{item.categoria}</span>
               </div>
               <div className="result-info">
-                <h3>{item.nome}</h3>
-                <strong>{item.resultado}</strong>
-                <p>{item.descricao}</p>
-                <span>{item.formato}</span>
-                <small>{item.prova}</small>
+                {item.detalhesPendentes ? (
+                  <>
+                    <h3 className="result-pending-title">Mais uma transformação real</h3>
+                    <p className="result-pending-copy">Nome e detalhes da evolução serão adicionados em breve.</p>
+                  </>
+                ) : (
+                  <>
+                    <h3>{item.nome}</h3>
+                    <strong>{item.resultado}</strong>
+                    <p>{item.descricao}</p>
+                    <span>{item.formato}</span>
+                    <small>{item.prova}</small>
+                  </>
+                )}
               </div>
             </motion.article>
           ))}

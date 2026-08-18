@@ -9,6 +9,7 @@ import Header from "./components/layout/Header";
 import WhatsAppButton from "./components/layout/WhatsAppButton";
 import Hero from "./components/sections/Hero";
 import Sobre from "./components/sections/Sobre";
+import Apresentacao from "./components/sections/Apresentacao";
 import Evolucao from "./components/sections/Evolucao";
 import Planos from "./components/sections/Planos";
 import { navLinks } from "./data/siteData";
@@ -31,6 +32,7 @@ export default function App() {
         <main>
           <Hero ready={!showIntro} />
           <Sobre />
+          <Apresentacao />
           <Evolucao />
           <Planos />
         </main>

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeUp } from "../../animations/fadeUp";
-import { createWhatsAppUrl, heroStats, whatsappMessages } from "../../data/siteData";
-import AnimatedStat from "../common/AnimatedStat";
+import { createWhatsAppUrl, whatsappMessages } from "../../data/siteData";
 
 const titleContainer = {
   hidden: {},
@@ -63,13 +62,6 @@ export default function Hero({ ready = true }) {
           </motion.div>
         </div>
 
-        <div className="stats-strip">
-          {heroStats.map((item, index) => (
-            <motion.div key={item.label} className="stat-chip" custom={index} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              <AnimatedStat item={item} active={ready} />
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );

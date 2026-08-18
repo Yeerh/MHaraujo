@@ -170,7 +170,7 @@ export default function Header({ navLinks }) {
                 animate="open"
                 variants={{ open: { transition: { delayChildren: 0.1, staggerChildren: 0.055 } } }}
               >
-                {navLinks.map((item, index) => (
+                {navLinks.map((item) => (
                   <motion.a
                     key={item.href}
                     href={item.href}
@@ -179,7 +179,6 @@ export default function Header({ navLinks }) {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     onClick={() => setMenuOpen(false)}
                   >
-                    <span className="mobile-menu-index">{String(index + 1).padStart(2, "0")}</span>
                     <span className="mobile-menu-label">{item.label}</span>
                     <span className="mobile-menu-arrow" aria-hidden="true">→</span>
                   </motion.a>
