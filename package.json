@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1 --port 3018",
-    "start": "vite preview --host 127.0.0.1 --port 3018"
+    "start": "node server.js"
   },
   "dependencies": {
     "framer-motion": "^12.16.0",

@@ -7,6 +7,7 @@ import ScrollProgress from "./components/layout/ScrollProgress";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import WhatsAppButton from "./components/layout/WhatsAppButton";
+import ErrorPage from "./components/common/ErrorPage";
 import Hero from "./components/sections/Hero";
 import Sobre from "./components/sections/Sobre";
 import Apresentacao from "./components/sections/Apresentacao";
@@ -15,6 +16,17 @@ import Planos from "./components/sections/Planos";
 import { navLinks } from "./data/siteData";
 
 export default function App() {
+  const pathname = window.location.pathname.replace(/\/+$/, "") || "/";
+  const errorCode = pathname === "/505" ? 505 : pathname !== "/" && pathname !== "/index.html" ? 404 : null;
+
+  if (errorCode) {
+    return <ErrorPage code={errorCode} />;
+  }
+
+  return <HomePage />;
+}
+
+function HomePage() {
   const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {

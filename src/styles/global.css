@@ -46,6 +46,199 @@
       min-height: 100vh;
     }
 
+    .error-page {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        linear-gradient(96deg, rgba(2,8,14,0.98) 3%, rgba(2,8,14,0.86) 48%, rgba(2,8,14,0.32) 100%),
+        url('/images/hero-matheus-stage.png') 30% 14% / cover no-repeat;
+    }
+
+    .error-page-shade {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 14% 30%, rgba(0,170,255,0.2), transparent 33%),
+        linear-gradient(180deg, transparent 62%, rgba(0,0,0,0.72));
+      pointer-events: none;
+    }
+
+    .error-header {
+      padding-top: clamp(1.2rem, 3vw, 2.2rem);
+    }
+
+    .error-brand {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .error-brand img {
+      width: clamp(78px, 9vw, 108px);
+      height: 58px;
+      object-fit: contain;
+    }
+
+    .error-brand span {
+      display: grid;
+      gap: 0.15rem;
+      text-transform: uppercase;
+    }
+
+    .error-brand strong {
+      font-size: 0.82rem;
+      letter-spacing: 0;
+    }
+
+    .error-brand small {
+      color: var(--neon);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .error-main {
+      display: flex;
+      align-items: center;
+      padding-block: clamp(2rem, 8vh, 5rem);
+    }
+
+    .error-content {
+      width: min(100%, 670px);
+    }
+
+    .error-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--neon);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .error-eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--neon);
+      box-shadow: 0 0 16px rgba(0,170,255,0.55);
+    }
+
+    .error-code {
+      margin: 0.6rem 0 -0.65rem;
+      color: transparent;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 12rem;
+      line-height: 0.78;
+      letter-spacing: 0;
+      -webkit-text-stroke: 1px rgba(0,170,255,0.42);
+      text-shadow: 0 0 45px rgba(0,170,255,0.08);
+    }
+
+    .error-content h1 {
+      max-width: 650px;
+      margin: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5.2rem;
+      line-height: 0.94;
+      letter-spacing: 0;
+    }
+
+    .error-description {
+      max-width: 580px;
+      margin: 1.15rem 0 0;
+      color: #b4c3ce;
+      font-size: 1.06rem;
+      line-height: 1.7;
+    }
+
+    .error-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.7rem;
+    }
+
+    .error-actions .btn {
+      min-height: 48px;
+    }
+
+    .error-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: clamp(1.2rem, 3vw, 2rem);
+      color: #8b9ba6;
+      font-size: 0.7rem;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .error-footer span {
+      color: var(--neon);
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .error-footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .error-code {
+        font-size: 8.5rem;
+      }
+
+      .error-content h1 {
+        font-size: 4rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .error-page {
+        background-position: 46% 14%;
+      }
+
+      .error-brand span,
+      .error-footer p {
+        display: none;
+      }
+
+      .error-main {
+        align-items: end;
+        padding-bottom: 2.2rem;
+      }
+
+      .error-code {
+        margin-bottom: -0.35rem;
+        font-size: 7rem;
+      }
+
+      .error-content h1 {
+        font-size: 3rem;
+      }
+
+      .error-description {
+        font-size: 0.96rem;
+      }
+
+      .error-actions {
+        display: grid;
+      }
+
+      .error-actions .btn {
+        width: 100%;
+      }
+    }
+
     .sr-only {
       position: absolute;
       width: 1px;
